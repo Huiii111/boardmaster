@@ -1,0 +1,354 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================================================================
+   BoardMaster — design tokens
+   Mirrors DESIGN_SYSTEM.md. Change both together.
+   =========================================================================== */
+
+:root {
+  /*
+   * Light instrument theme.
+   *
+   * Panels are white and sit on a cool grey bench, the way lab software and
+   * EDA tools are normally presented. The ramp runs light-to-dark so "raised"
+   * is the brightest surface rather than the dimmest, and the accents are
+   * darkened well below their dark-theme values -- the old #2fe0cf cyan scores
+   * about 1.5:1 on white and is unreadable as text, whatever it looked like on
+   * charcoal.
+   */
+  --surface-void: #e7ecf2;
+  --surface-base: #f2f5f9;
+  --surface-raised: #ffffff;
+  --surface-panel: #ffffff;
+  --surface-inset: #f1f4f8;
+  --surface-hover: #e9eef5;
+  --surface-active: #dbe4ef;
+
+  /* borders */
+  --border-subtle: #e6eaf0;
+  --border-default: #d2dae4;
+  --border-strong: #adbbcb;
+
+  /* text */
+  --text-primary: #10181f;
+  --text-secondary: #3a4654;
+  --text-tertiary: #5a6877;
+  --text-disabled: #8191a2;
+
+  /* accents — darkened so they pass contrast as text on white */
+  --accent-electric: #0d6fd1;
+  --accent-electric-bright: #0a5cb0;
+  --accent-cyan: #0b7a6d;
+  --accent-cyan-bright: #086257;
+  /* the saturated versions, for fills and 3D where contrast is not the issue */
+  --accent-cyan-vivid: #16b3a0;
+  --accent-electric-vivid: #2b9bf5;
+
+  /* signals */
+  --signal-ok: #0b7a52;
+  --signal-warn: #96580a;
+  --signal-error: #ca2b2b;
+  --signal-info: #1a5fcc;
+
+  /* physical materials, used by the 3D scene and the legend swatches */
+  --mat-breadboard: #e8e6df;
+  --mat-copper: #c88b45;
+  --mat-led-red: #e8352a;
+  --mat-resistor-body: #cdb086;
+
+  /* spacing scale (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* radii */
+  --radius-xs: 3px;
+  --radius-sm: 5px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* type */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', 'Cascadia Mono', monospace;
+
+  /* motion */
+  --ease-lab: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 320ms;
+
+  color-scheme: dark;
+}
+
+* {
+  border-color: var(--border-subtle);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--surface-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-feature-settings: 'cv05' 1, 'ss01' 1;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+/* --- engineering grid background, used behind the whole app shell --- */
+.lab-grid {
+  background-color: var(--surface-base);
+  background-image:
+    linear-gradient(to right, rgba(13, 111, 209, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(13, 111, 209, 0.05) 1px, transparent 1px),
+    linear-gradient(to right, rgba(13, 111, 209, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(13, 111, 209, 0.09) 1px, transparent 1px);
+  background-size:
+    16px 16px,
+    16px 16px,
+    96px 96px,
+    96px 96px;
+}
+
+/* --- brushed-metal instrument panel --- */
+.instrument {
+  /* A white card lifted off the bench. The old treatment was a highlight on
+     top of a dark fill, which on a light ground reads as nothing at all. */
+  background: var(--surface-panel);
+  border: 1px solid var(--border-default);
+  box-shadow:
+    0 1px 2px rgba(16, 24, 31, 0.04),
+    0 8px 24px -16px rgba(16, 24, 31, 0.18);
+}
+
+/* --- seven-segment style readout --- */
+.readout {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  background: var(--surface-inset);
+  border: 1px solid var(--border-default);
+  box-shadow: inset 0 1px 2px rgba(16, 24, 31, 0.06);
+}
+
+.readout-live {
+  /* A glow around light text on a light panel just smears it, so a live
+     reading is marked by weight and colour instead. */
+  color: var(--accent-cyan-bright);
+  font-weight: 600;
+}
+
+/* --- focus ring: single consistent treatment everywhere --- */
+.focus-lab:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role='button']:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* --- scrollbars --- */
+/*
+ * Explanatory copy: the short notes under a control that say what the model
+ * does and does not claim. They were repeated sixteen times as
+ * `text-[10px] leading-snug text-[var(--text-disabled)]`, which put running
+ * prose at roughly 3:1 against the panel -- under the 4.5:1 AA floor. Tertiary
+ * clears it, and the looser leading makes two- and three-line notes readable.
+ *
+ * It lives in the `components` layer so that a utility paired with it still
+ * wins. `text-wrap` is a `white-space` longhand, so an unlayered `.note` was
+ * quietly cancelling `truncate` on the component-library blurbs.
+ */
+@layer components {
+  .note {
+    font-size: 10.5px;
+    line-height: 1.55;
+    color: var(--text-tertiary);
+    text-wrap: pretty;
+  }
+  .note strong {
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+}
+
+.scroll-lab {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+.scroll-lab::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+.scroll-lab::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-lab::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+.scroll-lab::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+  background-clip: content-box;
+}
+
+/* --- animations --- */
+@keyframes lab-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: lab-fade-up var(--dur-base) var(--ease-lab) both;
+}
+
+@keyframes lab-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+.animate-lab-pulse {
+  animation: lab-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes lab-sweep {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}
+.animate-sweep::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 33%;
+  background: linear-gradient(90deg, transparent, rgba(11, 122, 109, 0.45), transparent);
+  animation: lab-sweep 1.1s var(--ease-lab) infinite;
+}
+
+@keyframes lab-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-lab-spin {
+  animation: lab-spin 0.8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* --- markdown rendered inside the tutor panel --- */
+.tutor-prose {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.tutor-prose strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.tutor-prose code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: var(--surface-inset);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  padding: 1px 4px;
+  color: var(--accent-cyan-bright);
+}
+.tutor-prose ol,
+.tutor-prose ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+.tutor-prose ol {
+  list-style: decimal;
+}
+.tutor-prose ul {
+  list-style: disc;
+}
+.tutor-prose li {
+  margin: 4px 0;
+}
+.tutor-prose p + p {
+  margin-top: 8px;
+}
+.tutor-prose blockquote {
+  border-left: 2px solid var(--border-strong);
+  padding-left: 10px;
+  margin: 6px 0;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+.tutor-prose em {
+  color: var(--text-tertiary);
+}
+
+/* --- range input, styled as an instrument slider --- */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: var(--surface-active);
+  border-radius: 999px;
+}
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  border: 2px solid var(--surface-base);
+  box-shadow: 0 0 0 3px rgba(11, 122, 109, 0.18);
+  cursor: pointer;
+}
+input[type='range']::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--surface-base);
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  cursor: pointer;
+}
+
+/* Keep the R3F canvas from showing a text cursor while orbiting. */
+canvas {
+  display: block;
+  touch-action: none;
+}
