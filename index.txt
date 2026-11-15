@@ -1,0 +1,18 @@
+1:"$Sreact.fragment"
+2:I[9766,[],""]
+3:I[960,["39","static/chunks/app/error-30b26788aaa07ff8.js"],"default"]
+4:I[8924,[],""]
+5:I[2619,["345","static/chunks/app/not-found-3476d246fa0935b9.js"],""]
+6:I[1524,["132","static/chunks/132-776239f0a603b9e1.js","974","static/chunks/app/page-e2e784c387288d48.js"],"LabShell"]
+7:I[4431,[],"OutletBoundary"]
+9:I[5278,[],"AsyncMetadataOutlet"]
+b:I[4431,[],"ViewportBoundary"]
+d:I[4431,[],"MetadataBoundary"]
+e:"$Sreact.suspense"
+10:I[7150,[],""]
+:HL["/boardmaster/_next/static/css/d31481105f2fada0.css","style"]
+0:{"P":null,"b":"n04zLbcvP0xWuF1LxkiHq","p":"/boardmaster","c":["",""],"i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/boardmaster/_next/static/css/d31481105f2fada0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"__variable_4e847d __variable_6b6774","children":["$","body",null,{"className":"antialiased","children":["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[],"template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","main",null,{"className":"grid h-dvh place-items-center lab-grid px-6","children":["$","div",null,{"className":"instrument max-w-md rounded-xl p-6 text-center","children":[["$","p",null,{"className":"font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--accent-cyan)]","children":"404 — open circuit"}],["$","h1",null,{"className":"mt-2 text-lg font-semibold text-[var(--text-primary)]","children":"No such bench"}],["$","p",null,{"className":"mt-2 text-xs leading-relaxed text-[var(--text-secondary)]","children":"That route does not exist in BoardMaster. The laboratory lives at the root of the app."}],["$","$L5",null,{"href":"/","className":"mt-4 inline-flex h-9 items-center rounded-md bg-[var(--accent-cyan)] px-4 text-xs font-semibold text-[#04221f] transition-colors hover:bg-[var(--accent-cyan-bright)]","children":"Back to the laboratory"}]]}]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L6",null,{}],null,["$","$L7",null,{"children":["$L8",["$","$L9",null,{"promise":"$@a"}]]}]]}],{},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$Lb",null,{"children":"$Lc"}],null],["$","$Ld",null,{"children":["$","div",null,{"hidden":true,"children":["$","$e",null,{"fallback":null,"children":"$Lf"}]}]}]]}],false]],"m":"$undefined","G":["$10",[]],"s":false,"S":true}
+c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#1a212b"}],["$","meta","3",{"name":"color-scheme","content":"dark"}]]
+8:null
+a:{"metadata":[["$","title","0",{"children":"BoardMaster — AI-Powered Virtual Electronics Laboratory"}],["$","meta","1",{"name":"description","content":"Build and test real circuits on a 3D breadboard, get deterministic electrical analysis, and work through faults with an evidence-based AI teaching assistant."}],["$","meta","2",{"name":"application-name","content":"BoardMaster"}],["$","meta","3",{"name":"keywords","content":"electronics,breadboard,LED circuit,PCB,education,simulation"}],["$","meta","4",{"name":"robots","content":"noindex, nofollow"}]],"error":null,"digest":"$undefined"}
+f:"$a:metadata"
