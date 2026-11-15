@@ -27,21 +27,21 @@ state of an interactive row.
 
 | Token | Hex | Figma style name | Use |
 | --- | --- | --- | --- |
-| `--surface-void` | `#070A0E` | `surface/void` | 3D canvas backdrop, scene fog |
-| `--surface-base` | `#0B0F14` | `surface/base` | App background, sidebars |
-| `--surface-raised` | `#101620` | `surface/raised` | Panel headers, toolbar |
-| `--surface-panel` | `#151C26` | `surface/panel` | Instrument panel body |
-| `--surface-inset` | `#0A0E13` | `surface/inset` | Inputs, readout wells |
-| `--surface-hover` | `#1B2430` | `surface/hover` | Row hover |
-| `--surface-active` | `#232E3C` | `surface/active` | Pressed / selected tab |
+| `--surface-void` | `#E7ECF2` | `surface/void` | 3D canvas backdrop, scene fog |
+| `--surface-base` | `#F2F5F9` | `surface/base` | App background, sidebars |
+| `--surface-raised` | `#FFFFFF` | `surface/raised` | Panel headers, toolbar |
+| `--surface-panel` | `#FFFFFF` | `surface/panel` | Instrument panel body |
+| `--surface-inset` | `#F1F4F8` | `surface/inset` | Inputs, readout wells |
+| `--surface-hover` | `#E9EEF5` | `surface/hover` | Row hover |
+| `--surface-active` | `#DBE4EF` | `surface/active` | Pressed / selected tab |
 
 ### 1.2 Borders
 
 | Token | Hex | Figma style name | Use |
 | --- | --- | --- | --- |
-| `--border-subtle` | `#1C2430` | `border/subtle` | Dividers inside a panel |
-| `--border-default` | `#273343` | `border/default` | Panel and control outlines |
-| `--border-strong` | `#35445A` | `border/strong` | Hover outline, scrollbar thumb |
+| `--border-subtle` | `#E6EAF0` | `border/subtle` | Dividers inside a panel |
+| `--border-default` | `#D2DAE4` | `border/default` | Panel and control outlines |
+| `--border-strong` | `#ADBBCB` | `border/strong` | Hover outline, scrollbar thumb |
 
 ### 1.3 Text
 
@@ -49,19 +49,19 @@ A four-step ramp. Never place `text/tertiary` on `surface/inset` below 11px.
 
 | Token | Hex | Figma style name | Contrast on `surface/base` |
 | --- | --- | --- | --- |
-| `--text-primary` | `#EEF4FB` | `text/primary` | 15.8:1 — AAA |
-| `--text-secondary` | `#A6B6C8` | `text/secondary` | 8.1:1 — AAA |
-| `--text-tertiary` | `#7C8DA2` | `text/tertiary` | 4.9:1 — AA |
-| `--text-disabled` | `#5B6C81` | `text/disabled` | 3.1:1 — AA for ≥18px / decorative only |
+| `--text-primary` | `#10181F` | `text/primary` | 16.4:1 — AAA |
+| `--text-secondary` | `#3A4654` | `text/secondary` | 8.8:1 — AAA |
+| `--text-tertiary` | `#5A6877` | `text/tertiary` | 5.2:1 — AA |
+| `--text-disabled` | `#708092` | `text/disabled` | 3.7:1 — AA for ≥18px / decorative only |
 
 ### 1.4 Accents
 
 | Token | Hex | Figma style name | Use |
 | --- | --- | --- | --- |
-| `--accent-electric` | `#1B9DFB` | `accent/electric` | Primary buttons |
-| `--accent-electric-bright` | `#43B9FF` | `accent/electric-bright` | Primary hover, hovered hole ring |
-| `--accent-cyan` | `#2FE0CF` | `accent/cyan` | Focus rings, live data, selection |
-| `--accent-cyan-bright` | `#7AF0E4` | `accent/cyan-bright` | Readout glow text |
+| `--accent-electric` | `#0D6FD1` | `accent/electric` | Primary buttons |
+| `--accent-electric-bright` | `#0A5CB0` | `accent/electric-bright` | Primary hover, hovered hole ring |
+| `--accent-cyan` | `#0B7A6D` | `accent/cyan` | Focus rings, live data, selection |
+| `--accent-cyan-bright` | `#086257` | `accent/cyan-bright` | Readout glow text |
 
 ### 1.5 Signals
 
@@ -70,10 +70,10 @@ colour is never the sole carrier of meaning.
 
 | Token | Hex | Figma style name | Severity |
 | --- | --- | --- | --- |
-| `--signal-ok` | `#34D399` | `signal/ok` | pass |
-| `--signal-warn` | `#FBBF24` | `signal/warn` | warning, wire anchor |
-| `--signal-error` | `#F87171` | `signal/error` | error |
-| `--signal-info` | `#60A5FA` | `signal/info` | info, ratsnest |
+| `--signal-ok` | `#0B7A52` | `signal/ok` | pass |
+| `--signal-warn` | `#96580A` | `signal/warn` | warning, wire anchor |
+| `--signal-error` | `#CA2B2B` | `signal/error` | error |
+| `--signal-info` | `#1A5FCC` | `signal/info` | info, ratsnest |
 
 ### 1.6 Physical materials
 

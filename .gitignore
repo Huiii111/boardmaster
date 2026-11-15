@@ -10,3 +10,8 @@ next-env.d.ts
 .DS_Store
 coverage/
 .next-build/
+
+# promo film: source is tracked, rendered output is not (36 MB each)
+promo/out/
+promo/node_modules/
+*.mp4

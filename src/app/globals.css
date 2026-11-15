@@ -35,7 +35,10 @@
   --text-primary: #10181f;
   --text-secondary: #3a4654;
   --text-tertiary: #5a6877;
-  --text-disabled: #8191a2;
+  /* 3.7:1 on the app background. The previous #8191a2 scored 2.95:1, which
+     fails even the 3:1 floor for large text -- and this token labels real
+     content (stat rows, table headers), not only disabled controls. */
+  --text-disabled: #708092;
 
   /* accents — darkened so they pass contrast as text on white */
   --accent-electric: #0d6fd1;
